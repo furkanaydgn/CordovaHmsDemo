@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width">
+	<title>Home</title>
+	<link rel="stylesheet" type="text/css" href="css/fontawesome/css/all.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" href="css/owl.carousel.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="app">
+			<div class="menushape1"></div>
+			<div class="menushape2"></div>
+			<ul class="menubar">
+				<li><a class="active" href="javascript:void(0)" onclick="openNav()"><i class="fas fa-bars"></i></a></li>
+				<li><a href="#"><i class="fas fa-home"></i></a></li>
+				<li><a href="#"><i class="fas fa-ellipsis-v"></i></a></li>
+			</ul>
+
+			<div class="sidenav" id="sidenav">
+				<div class="sidenavshape"></div>
+				<div class="profile">
+					<img src="images/avtar.png" alt="avtar">
+					<h3>Furkan A.</h3>
+					<p>Software Eng.</h3>
+				</div>
+				<div class="clearfix"></div>
+				<ul>
+					<li><a href="javascript:void(0)" class="closebtn" onclick="closeNav()"><i
+								class="fas fa-times"></i></a></li>
+					<li><a href="">Profile</a></li>
+					<li class="active"><a href="">About</a></li>
+					<li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+				</ul>
+			</div>
+			<!-- Home page starts here -->
+
+			<div class="row">
+
+				<div class="col-12">
+					<div class="owl-carousel">
+
+						<div class="item" data-merge="3">
+							<img src="images/godfather.jpg" alt="">
+							<h3>The Godfather</h3>
+							<button type="button" class="btn btn-warning">Buy Movie</button>
+						</div>
+						<div class="item" data-merge="3">
+							<img src="images/Shawshank.jpg" alt="">
+							<h3>The Shawshank Redemption</h3>
+							<button type="button" class="btn btn-warning">Buy Movie</button>
+						</div>
+						<div class="item" data-merge="3">
+							<img src="images/lord_of_rings.jpg" alt="">
+							<h3>The Lord of the Rings </h3>
+							<button id="buy_now" type="button" class="btn btn-warning">Buy Movie</button>
+						</div>
+
+					</div>
+					<div class="news">
+						<h2><span>Popular</span></h2>
+						<div id="movie" class="row news-item">
+
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div> <!-- app close -->
+	</div> <!-- container close -->
+
+	<!--	<script src="cordova.js" type="text/javascript"></script> -->
+	<script src="js/movie_page.js" type="text/javascript"></script>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/owl.carousel.js"></script>
+
+	<script>
+		function openNav() {
+			document.getElementById("sidenav").style.width = "300px";
+		}
+
+		function closeNav() {
+			document.getElementById("sidenav").style.width = "0";
+		}
+		$(document).ready(function () {
+			$('.owl-carousel').owlCarousel({
+				items: 6,
+				loop: true,
+				margin: 10,
+				merge: true,
+				responsive: {
+					678: {
+						mergeFit: true
+					},
+					1000: {
+						mergeFit: false
+					}
+				}
+			});
+		})
+	</script>
+
+</body>
+
+</html>

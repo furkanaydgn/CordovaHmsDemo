@@ -9,8 +9,8 @@
 	<author email="dev@cordova.apache.org" href="https://cordova.apache.org">
 		Apache Cordova Team
 	</author>
-	<content src="index.html" />
 	<content src="login.html" />
+	<content src="movie_page.html" />
 	<allow-intent href="http://*/*" />
 	<allow-intent href="https://*/*" />
 </widget>

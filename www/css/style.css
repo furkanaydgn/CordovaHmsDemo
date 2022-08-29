@@ -1,8 +1,4 @@
-/*!
- * Created by Jayant Bramhankar (www.sahyadritechnologies.com) 
- * Youtube Channel - https://www.youtube.com/channel/UCPSeFaxM6ni_HGpfkb3Kwbw;
- * License - Free to use
- */
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800,700,300);
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
@@ -20,6 +16,7 @@ html {
     -webkit-tap-highlight-color: transparent;
 }
 
+
 body
 {
   background: #fcfcfc;
@@ -29,10 +26,23 @@ body
     -webkit-text-size-adjust: 100%;
     -webkit-font-smoothing: antialiased;
     position: relative;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1em;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1em;
 }
 
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 160px;
+  height: 160px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .container
 {
@@ -96,7 +106,7 @@ body
   width: 100%;
 }
 .login-container h3{
-   font-size: 2em;
+  font-size: 2em;
   margin: 10px 0 85px 30px;
   font-family: 'Open Sans', sans-serif;
   color: #555;
@@ -109,6 +119,7 @@ body
 
 .login-container .form-control{
   position: relative;
+
 }
 
 
@@ -119,8 +130,8 @@ body
   letter-spacing: 1px;
   font-size: 1em;
   font-weight: 600;
-  color: #555;
-  border: 1px solid rgba(244, 215, 66,1);
+  background-color: #b2b2b2;
+  background-color: rgba(0, 0, 0, .3);  border: 1px solid rgba(244, 215, 66,1);
   border-left: 0px;
   outline: none;
   background: transparent;
@@ -379,31 +390,47 @@ background: linear-gradient(90deg, rgba(247,118,43,0.5) 0%, rgba(255,230,145,0.6
 /**HOME PAGE**/
 
 .owl-carousel {
-  margin-top: 25px;
+  margin-top: 5px;
 }
 
 .owl-carousel .item{
-  margin-top: 25px;
+  margin-top: 5px;
   background: rgba(255, 255, 255,0.3);
-  padding-bottom: 5px;
-  height: 180px;
+
 }
 .owl-carousel .item img{
-  height: 130px;
-  border: 10px solid  rgba(255, 255, 255,0.3);
+
+  border: 5px solid  rgba(255, 255, 255,0.3);
+  height: 230px;
+  width: %100;
 }
 
 
-.owl-carousel .item h4{
+.owl-carousel .item h3{
+  font-size: .9em;
+  color: #111;
+  margin: 15px;
+  text-align: center;
+
+}
+
+.owl-carousel .item button{
   font-size: 1em;
   color: #111;
-  margin: 5px;
   text-align: center;
+  margin: auto;
+  margin-left:38px;
 }
 
 .news{
-  margin-top:25px; 
-  padding: 5px;
+margin-tap:-30px;
+}
+.news button{
+  font-size: 1em;
+  color: #111;
+  text-align: center;
+  margin-left:135px;
+  margin-bottom :20px;
 }
 
 .news h2{
@@ -416,6 +443,7 @@ background: linear-gradient(90deg, rgba(247,118,43,0.5) 0%, rgba(255,230,145,0.6
   font-weight: 800;
   border-bottom: 1px solid rgba(244, 215, 66,0.8);
   margin: 20px 0;
+  margin-button:30px;
 }
 
 .news h2 span{
@@ -425,52 +453,81 @@ background: linear-gradient(90deg, rgba(247,118,43,0.5) 0%, rgba(255,230,145,0.6
     padding: 5px 3px;
 }
 
+.news h3{
+  font-family: 'Open Sans', sans-serif;
+  color: #555;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-size: 1.3em;
+  font-weight: 800;
+  margin: 10px 0;
+
+}
+
+
 .news .news-item {
-  margin-top: 10px;
   padding: 15px;
+   margin-button:10px;
 }
 
 .news .news-item img{ 
-  height: 100px;
-  width: 25%;
-  border:5px solid rgba(244, 215, 66,0.4);
-  border-radius: 10px;
-  float: left;
-  box-shadow: -10px -10px 1px rgba(244, 215, 66,0.7);
-  position: relative;
-  top: -10px;
-}
-.news .news-desc {
-  margin-top: 10px;
-  height: 80px;
-  border-top:1px dashed rgba(244, 215, 66,1);
-  border-bottom:1px dotted rgba(244, 215, 66,1);
-  padding: 5px 0 0 15px;
-  float: left;
-  width: 58%;
-}
+  height: 380px;
+  width: 65%;
+  float: center;
+  margin-left:60px;
 
-.news .news-item h4{
-  font-size: 1.1em;
-  font-weight: 600;
-}
-.news .news-item p{
-  font-size: 0.9em;
 }
 
 
-.news .news-item .social{ 
-  height: 100px;
-  width: 15%;
-  border:5px solid rgba(244, 215, 66,0.4);
-  border-radius: 10px;
-  float: right;
-  box-shadow: 10px 10px 1px rgba(244, 215, 66,0.7);
-  position: relative;
-  bottom: -10px;
-  text-align: center;
+
+.movie {
+    background-color: rgba(0, 0, 0, .3);  border: 1px solid rgba(244, 215, 66,1);
+    border-left: 0px;
+    outline: none;
+    background: transparent;
+    box-shadow: 0 7px 5px rgba(110, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    margin: 1rem;
+    justify-content: center;
+    align-content: center;
+
 }
 
-.news .news-item .social a{
-  line-height: 30px;
+
+
+.movie-info {
+    background: rgba(244, 215, 66,0.6);
+    background: transparent;
+    color: #eee;
+
+}
+
+.movie-info h3 {
+ font-size: 1.2em;
+    color: rgba(0,0,0);
+    margin: center;
+    background: transparent;
+    text-align:center;
+
+}
+
+
+.overview {
+ background-color: #b2b2b2;
+    background-color: rgba(0, 0, 0, .3);  border: 1px solid rgba(244, 215, 66,1);
+    border-left: 0px;
+    outline: none;
+    background: transparent;
+    background: rgba(244, 215, 66,0.6);
+    padding: 4rem;
+    position: absolute;
+    max-height: 100%;
+    overflow: auto;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
 }
