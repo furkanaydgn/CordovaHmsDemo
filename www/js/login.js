@@ -20,22 +20,17 @@
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 
-var displayName;
-
 
 
 var app = {
     initialize: function () {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-
     },
     onDeviceReady: function () {
         huawei_button_logo();
         document.getElementById('btn_auth_button').addEventListener('click', signIn);
         document.getElementById('exit_from_app').addEventListener('click', exit);
         document.getElementById('log_out_from_account').addEventListener('click', accountSignOut);
-        document.getElementById('test').addEventListener('click', accountSignOut);
-
     }
 };
 
@@ -54,26 +49,14 @@ async function signIn() {
     const packageName = HMSCommonTypes.PackageName.ACCOUNT;
 
     const res = await HMSAccountAuthService.signIn(signInParameters, packageName);
-
-    document.getElementById("loading").style.visibility = "visible";
-
     accessToken = res.accessToken;
-    displayName = res.displayName;
-    //   alert(JSON.stringify(res.displayName));
+
     if (accessToken != null) {
-        alert("asdas");
         window.location = "movie_page.html";
     }
 
 }
 
-async function accountSignOut() {
-    alert("signOut -> test");
-
-    await HMSAccountAuthService.signOut();
-    alert("signOut -> success");
-
-}
 
 async function huawei_button_logo() {
     const edittedButton = "btn_auth_button";
@@ -82,6 +65,5 @@ async function huawei_button_logo() {
         HMSHuaweiIdAuthButton.ColorPolicy.COLOR_POLICY_RED,
         HMSHuaweiIdAuthButton.CornerRadius.CORNER_RADIUS_LARGE);
 }
-
 
 app.initialize();

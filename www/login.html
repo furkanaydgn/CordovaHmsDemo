@@ -8,7 +8,6 @@
 
 	<title>Login</title>
 	<link rel="stylesheet" type="text/css" href="css/fontawesome/css/all.min.css">
-
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
@@ -17,9 +16,10 @@
 		<div class="app">
 			<div class="shape-circle"></div>
 			<h2 class="page-heading"><span>Login</span>
-
 				<i id="exit_from_app" class="fas fa-sign-in-alt"></i>
 			</h2>
+			<div id="loading" style="visibility: hidden;" class="loader"></div>
+
 			<div class="login-container">
 				<h3>Login to your accounts</h3>
 				<form>
@@ -32,11 +32,12 @@
 					<input type="submit" class="button-submit " name="submit">
 				</form>
 
-				<div id="loading" style="visibility: hidden;" class="loader"></div>
-
 				<div class="form-control">
-					<div class="button" id="btn_auth_button"></div>
 					<br><br>
+					<p style="font-size:20px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						Or </p>
+					<br><br>
+					<div style="margin-left:30px;" class="button" id="btn_auth_button"></div>
 				</div>
 			</div>
 		</div>
@@ -44,7 +45,7 @@
 
 	<script src="cordova.js" type="text/javascript"></script>
 	<script src="js/login.js" type="text/javascript"></script>
-
+	<script src="js/jquery.min.js"></script>
 
 </body>
 
