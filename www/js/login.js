@@ -30,7 +30,6 @@ var app = {
         huawei_button_logo();
         document.getElementById('btn_auth_button').addEventListener('click', signIn);
         document.getElementById('exit_from_app').addEventListener('click', exit);
-        document.getElementById('log_out_from_account').addEventListener('click', accountSignOut);
     }
 };
 
