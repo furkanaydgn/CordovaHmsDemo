@@ -27,25 +27,21 @@ var app_movie = {
     onDeviceReady: function () {
         checkEnvironmentReady();
         document.getElementById('signOut').addEventListener('click', accountSignOut);
-
-        for (var i = 0; i < 10; i++) {
-            document.getElementById(i).addEventListener('click', buy_movie);
-        }
+        document.getElementById('test').addEventListener('click', buy_movie);
 
     }
 };
 
 async function buy_movie() {
-    alert("test");
+    alert("buy_movie");
     try {
         let message = await HMSInAppPurchases.createPurchaseIntent({
             priceType: PRICETYPE.CONSUMABLE,
-            productId: "test_movie_item",
+            productId: "test_movie_item_2",
             developerPayload: "HMSCoreDeveloper",
         });
 
         console.log(JSON.stringify(message, ["returnCode", "errMsg", "inAppPurchaseData", "inAppDataSignature", "signatureAlgorithm"]));
-
         if (message.returnCode === 0) {// if successful
             createPurchasedProductOnList(product.productId, message.inAppPurchaseData, productType)
         } else {
@@ -57,6 +53,26 @@ async function buy_movie() {
     }
 
 }
+const getProduct = (productId, productType) => {
+    const pList = PRODUCTS[productType].products.filter(p => p.id === productId)
+    return pList.length > 0 ? pList[0] : { id: 'id', name: 'name' }
+}
+
+const createPurchasedProductOnList = (productId, purchaseData, productType) => {
+    const product = getProduct(productId, productType)
+    var listNode = document.getElementById(`list-${productType}-purchased`);
+    var productEl = createElementFromHTML(
+        `<li id='${productType}-${product.id}-purchased'>
+            <div class="title">${product.name}</div>
+        </li>`
+    );
+    productEl.onclick = () => {
+        if (productType === 'consumable' && confirm(`Do you want to consume ${product.name}?`)) {
+            consumeOwnedPurchase(product.id, purchaseData, productType);
+        }
+    };
+    listNode.appendChild(productEl)
+}
 
 async function accountSignOut() {
 
@@ -66,23 +82,20 @@ async function accountSignOut() {
             alert("signOut -> success");
             window.location = "login.html";
         }
-
     }).catch(function () {
         alert('signOut -> Error : ' + JSON.stringify(ex));
     });
-
 }
 
 
 const checkEnvironmentReady = async () => {
-
     try {
         let message = await HMSInAppPurchases.isEnvReady(true);
         console.log(message);
         let sandbox = await HMSInAppPurchases.isSandboxActivated();
         console.log(sandbox);
         getProductsInformation();
-        //    alert("Success(HMSInAppPurchases.isEnvReady):" + JSON.stringify(message, null, 4));
+        //  alert("Success(HMSInAppPurchases.isEnvReady):" + JSON.stringify(message, null, 4));
     } catch (errMsg) {
         console.log(errMsg);
         alert("Error(HMSInAppPurchases.isEnvReady): " + errMsg + + JSON.stringify(errMsg, null, 4));
@@ -96,16 +109,20 @@ const getProductsInformation = () => {
         await obtainProductInfoFromType(pType)
         await obtainOwnedPurchasesFromType(pType)
     })
+
+    alert("getProductsInformation");
 }
 
 const obtainProductInfoFromType = async (pType) => {
     try {
+
         let message = await HMSInAppPurchases.obtainProductInfo({
             priceType: PRODUCTS[pType].type,
             productList: PRODUCTS[pType].products.map(p => p.id)
         });
         //     alert(JSON.stringify(message))
         console.log(message);
+
     } catch (err) {
         defaultErrorHandler(err);
     }
@@ -115,6 +132,7 @@ const obtainOwnedPurchasesFromType = async (pType) => {
         let message = await HMSInAppPurchases.obtainOwnedPurchases({
             priceType: PRODUCTS[pType].type
         });
+        //    alert(JSON.stringify(message))
         console.log(message);
     } catch (err) {
         defaultErrorHandler(err);
@@ -123,7 +141,6 @@ const obtainOwnedPurchasesFromType = async (pType) => {
 
 
 async function getMovies(url) {
-
     const resp = await fetch(url);
     const respData = await resp.json();
     console.log(respData);
